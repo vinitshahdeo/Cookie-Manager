@@ -1,0 +1,19 @@
+{
+    "name" : "Cookie Manager",
+    "version" : "1.0",
+    "author" : "Vinit Shahdeo",
+    "description" : "An extension to manage your browser cookies!",
+    "permissions": [ "cookies","storage", "tabs", "http://*/*", "https://*/*" , "nativeMessaging"],
+    "icons": { "16": "icon.png", "48": "icon.png", "128": "icon.png" },
+    "browser_action": {
+      "default_title": "Cookie Cleaner",
+      "default_icon": "icon.png",
+      "default_popup": "index.html"
+    },
+    "background": {
+      "scripts": ["background.js"],
+      "persistent": false
+    },
+    "manifest_version": 2
+  }
+  
