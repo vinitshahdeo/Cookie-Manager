@@ -11,6 +11,8 @@
 
 > It also displays the total number of cookies present in your browser at the top.
 
+![Screenshot](https://github.com/vinitshahdeo/Cookie-Manager/blob/master/assets/Screenshot%202019-01-17%20at%2010.57.41%20PM.png?raw=true)
+
 ### Installation
 
 **Steps to install this extension manually :**
