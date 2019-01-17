@@ -26,7 +26,12 @@
 
 - And here, you go!
 
-Note - **Icon is taken from [here](https://pngtree.com/free-icon/clean_419342)**
+Note - **Icon is taken from [here](https://pngtree.com/free-icon/clean_419342)**.
+
+### Useful Links
+
+- [How to install a Chrome extension without using the Chrome Web Store](https://blog.hunter.io/how-to-install-a-chrome-extension-without-using-the-chrome-web-store-31902c780034)
+- Read about **HTTP Cookies** [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies).
 
 ### To Do
 
