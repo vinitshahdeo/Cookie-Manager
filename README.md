@@ -31,9 +31,13 @@ Note - **Icon is taken from [here](https://pngtree.com/free-icon/clean_419342)**
 ### To Do
 
 - [x] Setting cookies for given domain
+
 - [ ] Display cookies based on the filter i.e. regex(say *.github.com)
+
 - [ ] Delete cookies individually for the domain
+
 - [ ] Prompt a confirmation for **`Clear All Cookies`**
+
 - [ ] Refactoring of code
 
 
