@@ -1,3 +1,7 @@
+/**
+ * @author Vinit Shahdeo
+ * @email vinitshahdeo@gmail.com
+ */
 var count = 0;
 $("#banner").fadeTo(4000, 500).slideUp(500, function(){
   $("#banner").slideUp(500);
