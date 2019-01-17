@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cookie Cleaner - Chrome Extension</title>
+        <meta name="author" content="Vinit Shahdeo">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Kanit|Rubik" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+        <style>
+            body{
+                min-width: 420px;
+                min-height: 10%;
+                color: #172B4D;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+            }
+            .title{
+                font-family:Anton, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            }
+            .developer{
+                opacity: 0.8;
+            }
+            .btnBelow{
+                font-family: 'Kanit', sans-serif;
+
+            }
+            #banner{
+                font-family: 'Rubik', sans-serif;
+            }
+        </style>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h2 class="title text-center text-capitalize">Cookie Manager</h2>
+            
+            <center><button type="button" class="btn btn-default"><strong>Total Cookies <span class="badge" id="cookie-counter"></span></strong></button>
+            </center>
+                <div class="clearfix"></div>
+            <br>
+            <div class="alert alert-info alert-dismissible" id="banner">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <p id="message">Please enter <strong>complete url</strong> below and press <span class='label label-primary'>Display Cookies</span></p>
+                  </div>
+                  <div id="result"></div>
+            <form>
+              <div class="form-group">
+                <label for="url">Enter Domain:</label>
+                <input type="text" class="form-control" id="url" required="required">
+              </div>
+              
+              <div class="form-group" style="display:none;" id="cookie">
+                <label for="key">Name:</label>
+                <input type="text" class="form-control" id="key" required="required">
+                <label for="value">Value:</label>
+                <input type="text" class="form-control" id="value" required="required">
+              </div>
+            <button type = "button"  class="btn btnBelow btn-danger" id="clear_cookies">Clear All Cookies</button>
+            <button type="button" class="btn btnBelow btn-primary" id="display_cookies">Display Cookies</button>
+            <button type="button" class="btn btnBelow btn-success" id="set_cookies">Set Cookies</button>
+            </form>
+            
+            <div class="clearfix"></div>
+            <br>
+            <table id="cookieslog" class="table table-hover table-bordered"></table>
+          </div>
+          
+        <div id="developer"><p class="text-center text-info developer"><span class="label label-default">Developed by Vinit Shahdeo</span> </p></div>
+
+        <script src="index.js"></script>
+        <script src="background.js"></script>
+    </body>
+</html>
