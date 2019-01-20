@@ -56,7 +56,7 @@ function displayCookies(){
         firstRow.insertCell(1).innerHTML="<strong>VALUE</strong>";
       }
       
-      console.log(cookies[i]);
+      //console.log(cookies[i]);
       //var row = "<tr><td>"+cookies[i].name+"</td><td>"+cookies[i].value+"</td></tr>";
       var row = tableLog.insertRow(-1);
       var value = cookies[i].value;
@@ -96,11 +96,11 @@ function setCookies(){
   }
   else{
   chrome.cookies.set({url:domain,name:name,value:value,expirationDate : 1610701693},function(cookie){
-    console.log("cookie is set");
+    //console.log("cookie is set");
 
     document.getElementById("banner").className="alert alert-success alert-dismissible";
     document.getElementById("message").innerHTML = "<strong>SUCCESS!</strong> Cookies is set for <strong>"+domain+"</strong>";
-    console.log(cookie);
+    //console.log(cookie);
     var name = document.getElementById("key").value="";
     var value = document.getElementById("value").value="";
     $("#banner").fadeTo(2000, 500).slideUp(500, function(){
@@ -114,15 +114,16 @@ function setCookies(){
  //setCookies();
 function onCookieChanged(){
   chrome.cookies.onChanged.addListener(function(cookies){
-      console.log("cookies are being changed ", cookies.cookie.domain);
-      console.log(cookies);
+      //console.log("cookies are being changed ", cookies.cookie.domain);
+      //console.log(cookies);
   });
 }
+
 
 onCookieChanged();
 
   function clearAllCookies(){
-    console.log("cookies cleared");
+    //console.log("cookies cleared");
     chrome.cookies.getAll({}, function(cookies) {
         for (var i in cookies) {
           removeCookie(cookies[i]);
@@ -161,4 +162,9 @@ onCookieChanged();
     url.addEventListener('blur',function(){
         updateBanner();
     });
+});
+
+
+chrome.cookies.getAll({},function(cookies){
+  console.log(cookies);
 });
