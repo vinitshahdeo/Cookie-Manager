@@ -47,7 +47,7 @@ Note - **Icon is taken from [here](https://pngtree.com/free-icon/clean_419342)**
 
 ### Wanna contribute?
 
-[![Fork this on GitHub](https://img.shields.io/badge/Click to&nbsp;Fork-This&nbsp;repository-orange.svg?style=for-the-badge)](https://github.com/vinitshahdeo/Cookie-Manager/fork)
+[![Fork this on GitHub](https://img.shields.io/badge/Click&nbsp;to&nbsp;Fork-This&nbsp;repository-orange.svg?style=for-the-badge)](https://github.com/vinitshahdeo/Cookie-Manager/fork)
 
 If you want to contribute to this project and make it better, your help is most welcome. Fork it and make changes in your personal branch and send **pull request** to `develop`
 
