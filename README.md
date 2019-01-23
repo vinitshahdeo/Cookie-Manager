@@ -10,6 +10,9 @@
 3. Set cookies for any domain.
 
 > It also displays the total number of cookies present in your browser at the top.
+> Check the screenshots of UI [here](https://github.com/vinitshahdeo/Cookie-Manager/tree/master/assets)
+
+![Screenshot](https://github.com/vinitshahdeo/Cookie-Manager/blob/master/assets/Screenshot%202019-01-17%20at%2010.57.41%20PM.png?raw=true)
 
 ### Installation
 
@@ -23,14 +26,23 @@
 
 - And here, you go!
 
-Note - **Icon is taken from [here](https://pngtree.com/free-icon/clean_419342)**
+Note - **Icon is taken from [here](https://pngtree.com/free-icon/clean_419342)**.
+
+### Useful Links
+
+- [How to install a Chrome extension without using the Chrome Web Store](https://blog.hunter.io/how-to-install-a-chrome-extension-without-using-the-chrome-web-store-31902c780034)
+- Read about **HTTP Cookies** [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies).
 
 ### To Do
 
 - [x] Setting cookies for given domain
+
 - [ ] Display cookies based on the filter i.e. regex(say *.github.com)
+
 - [ ] Delete cookies individually for the domain
+
 - [ ] Prompt a confirmation for **`Clear All Cookies`**
+
 - [ ] Refactoring of code
 
 
