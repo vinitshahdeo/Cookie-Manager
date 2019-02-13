@@ -5,6 +5,8 @@
 
 ### What you can do with this extension?
 
+[![Live Demo, not Lie](https://forthebadge.com/images/badges/its-not-a-lie-if-you-believe-it.svg)](https://github.com/vinitshahdeo/Cookie-Manager/)
+
 1. Display cookies for given **url**
 2. Delete all cookies present in the browser
 3. Set cookies for any domain.
@@ -49,7 +51,7 @@ Note - **Icon is taken from [here](https://pngtree.com/free-icon/clean_419342)**
 
 ### Wanna contribute?
 
-[![Fork this on GitHub](https://img.shields.io/badge/Click&nbsp;to&nbsp;Fork-This&nbsp;repository-orange.svg?style=for-the-badge)](https://github.com/vinitshahdeo/Cookie-Manager/fork) [![Made with JS](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://github.com/vinitshahdeo/Cookie-Manager/)
+[![Fork this on GitHub](https://img.shields.io/badge/Click&nbsp;to&nbsp;Fork-This&nbsp;repository-orange.svg?style=for-the-badge)](https://github.com/vinitshahdeo/Cookie-Manager/fork) 
 
 If you want to contribute to this project and make it better, your help is most welcome. Fork it and make changes in your personal branch and send **pull request** to `develop`
 
