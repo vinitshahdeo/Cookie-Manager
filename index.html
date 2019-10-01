@@ -22,7 +22,13 @@
             }
             .btnBelow{
                 font-family: 'Kanit', sans-serif;
-
+            }
+            .alertClearAll {
+              text-align: center;
+              display: none;
+            }
+            .btnClearAll {
+              margin-top: 10px;
             }
             #banner{
                 font-family: 'Rubik', sans-serif;
@@ -56,7 +62,11 @@
                 <label for="value">Value:</label>
                 <input type="text" class="form-control" id="value" required="required">
               </div>
-            <button type = "button"  class="btn btnBelow btn-danger" id="clear_cookies">Clear All Cookies</button>
+            <div class="alert alert-danger alertClearAll" id="alert_clear_all"> You're about to Clear all Cookies. Are you sure ?
+              <button type="button" class="btn btnClearAll btn-success" id="clear_cookies">Yes!</button>
+              <button type="button" class="btn btnClearAll btn-danger" id="cancel_clear_cookies">No!</button>
+            </div>
+            <button type = "button"  class="btn btnBelow btn-danger" id="append_alert_clear_cookies">Clear All Cookies</button>
             <button type="button" class="btn btnBelow btn-primary" id="display_cookies">Display Cookies</button>
             <button type="button" class="btn btnBelow btn-success" id="set_cookies">Set Cookies</button>
             </form>

@@ -121,7 +121,16 @@ function onCookieChanged(){
 
 onCookieChanged();
 
+  function appendAlertClearCookies() {
+    document.getElementById("alert_clear_all").style.display="block";
+  }
+
+  function hideAlertClearCookies() {
+    document.getElementById("alert_clear_all").style.display="none";
+  }
+
   function clearAllCookies(){
+    hideAlertClearCookies();
     console.log("cookies cleared");
     chrome.cookies.getAll({}, function(cookies) {
         for (var i in cookies) {
@@ -144,11 +153,19 @@ onCookieChanged();
   }
 
   document.addEventListener('DOMContentLoaded', function() {
+    var append_alert_clear_Cookies = document.getElementById("append_alert_clear_cookies");
+    var cancel_clear_Cookies = document.getElementById("cancel_clear_cookies");
     var clear_Cookies = document.getElementById("clear_cookies");
     var set_Cookies = document.getElementById("set_cookies");
     var display_Cookies = document.getElementById("display_cookies");
     var url = document.getElementById("url");
     // onClick's logic below:
+    append_alert_clear_Cookies.addEventListener('click', function() {
+      appendAlertClearCookies();
+    });
+    cancel_clear_Cookies.addEventListener('click', function() {
+      hideAlertClearCookies();
+    });
     clear_Cookies.addEventListener('click', function() {
         clearAllCookies();
     });
