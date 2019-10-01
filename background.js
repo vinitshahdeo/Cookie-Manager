@@ -138,6 +138,16 @@ onCookieChanged();
               cookie.path;
     chrome.cookies.remove({"url": url, "name": cookie.name});
   }
+
+  function removeDomainCookies() {
+    var domain = document.getElementById('url')
+    chrome.cookies.getAll({url: domain.value}, function(cookies) {
+      cookies.forEach(function(cookie) {
+        removeCookie(cookie)
+      })
+      displayCookies()
+    })
+  }
   
   function updateBanner(){
     document.getElementById("banner").style.display="none";
@@ -145,6 +155,7 @@ onCookieChanged();
 
   document.addEventListener('DOMContentLoaded', function() {
     var clear_Cookies = document.getElementById("clear_cookies");
+    var delete_Domain_Cookies = document.getElementById("delete_domain_cookies")
     var set_Cookies = document.getElementById("set_cookies");
     var display_Cookies = document.getElementById("display_cookies");
     var url = document.getElementById("url");
@@ -152,6 +163,9 @@ onCookieChanged();
     clear_Cookies.addEventListener('click', function() {
         clearAllCookies();
     });
+    delete_Domain_Cookies.addEventListener('click', function() {
+        removeDomainCookies()
+    })
     set_Cookies.addEventListener('click',function(){
         setCookies();
     });
