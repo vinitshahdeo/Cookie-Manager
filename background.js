@@ -2,6 +2,7 @@
  * @author Vinit Shahdeo
  * @email vinitshahdeo@gmail.com
  */
+ var conf_flag = false;
 var count = 0;
 $("#banner").fadeTo(4000, 500).slideUp(500, function(){
   $("#banner").slideUp(500);
@@ -13,6 +14,7 @@ function setCookieCount(){
 chrome.cookies.getAll({},function(cookies){
     count=cookies.length;
     document.getElementById("cookie-counter").innerHTML = count;
+    document.getElementById("confirmation").style.display = "none";
 });
 }
 
@@ -121,16 +123,30 @@ function onCookieChanged(){
 
 onCookieChanged();
 
+  function updateFlag(val){
+    conf_flag = val
+  }
+
   function clearAllCookies(){
     console.log("cookies cleared");
-    chrome.cookies.getAll({}, function(cookies) {
-        for (var i in cookies) {
-          removeCookie(cookies[i]);
-        }
-      });
-      document.getElementById("banner").className="alert alert-danger alert-dismissible";
-      document.getElementById("message").innerHTML = "All Cookies are cleared!";
-      setCookieCount();
+    var display_stat = document.getElementById("banner").style.display
+    if(display_stat == 'block'){
+        document.getElementById("banner").style.display = 'none';
+        document.getElementById("confirmation").style.display = 'none';
+    }else{
+        document.getElementById("banner").style.display = 'block';
+        document.getElementById("confirmation").style.display = 'block';
+    }
+    document.getElementById("banner").className="alert alert-danger alert-dismissible";
+    document.getElementById("message").innerHTML = "Do you want to delete all cookies?";
+    if(conf_flag == true){
+
+
+    }
+//    else{
+//      document.getElementById("banner").className="alert alert-danger alert-dismissible";
+//      document.getElementById("message").innerHTML = "Operation cancelled!";
+//    }
   }
   
   function removeCookie(cookie) {
@@ -147,6 +163,7 @@ onCookieChanged();
     var clear_Cookies = document.getElementById("clear_cookies");
     var set_Cookies = document.getElementById("set_cookies");
     var display_Cookies = document.getElementById("display_cookies");
+    var del_confirmation = document.getElementById("confirmation");
     var url = document.getElementById("url");
     // onClick's logic below:
     clear_Cookies.addEventListener('click', function() {
@@ -157,6 +174,16 @@ onCookieChanged();
     });
     display_Cookies.addEventListener('click',function(){
         displayCookies();
+    });
+    del_confirmation.addEventListener('click',function(){
+        chrome.cookies.getAll({}, function(cookies) {
+            for (var i in cookies) {
+              removeCookie(cookies[i]);
+            }
+        });
+        document.getElementById("banner").className="alert alert-danger alert-dismissible";
+        document.getElementById("message").innerHTML = "All Cookies are cleared!";
+        document.getElementById("cookie-counter").innerHTML = 0;
     });
     url.addEventListener('blur',function(){
         updateBanner();
