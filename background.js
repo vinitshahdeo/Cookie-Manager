@@ -3,36 +3,37 @@
  * @email vinitshahdeo@gmail.com
  */
 var count = 0;
+// banner animations
 $("#banner").fadeTo(4000, 500).slideUp(500, function(){
   $("#banner").slideUp(500);
 });
 $("#developer").fadeTo(4000, 500).slideUp(500, function(){
   $("#developer").slideUp(500);
 });
-function setCookieCount(){
+
+// shows total cookies 
+setCookieCount = () => {
 chrome.cookies.getAll({},function(cookies){
-    count=cookies.length;
-    document.getElementById("cookie-counter").innerHTML = count;
+    count = cookies.length;
+    $("#cookie-counter").html(count);
 });
 }
 
 setCookieCount();
 
-function displayCookies(){
-
-  setCookieCount();
+displayCookies = () => {
   
-  document.getElementById("cookie").style.display="none";
+  $("#cookie").css('display', 'none');
   
   var tableLog = document.getElementById("cookieslog");
   tableLog.style.display="table";
   tableLog.innerHTML = "";
   
-  var domain = document.getElementById("url").value;
+  var domain = $("#url").val();
   //var tarea_regex = /(http(s?))\:\/\//gi;
   if(domain=="" || domain==null){
-    document.getElementById("banner").style.display="block";
-    document.getElementById("message").style.display-"block";
+    $("#banner").css('display', "block");
+    $("#message").css('display',"block");
     document.getElementById("banner").style.className="alert alert-danger alert-dismissible";
     document.getElementById("message").innerHTML="Invalid URL! <strong>Hint</strong> : Please enter <strong>complete url</strong> including <kbd>http://</kpd> or <kpd>https://</kpd> below and press <span class='label label-primary'>Display Cookies</span>"
   }
@@ -48,9 +49,7 @@ function displayCookies(){
     //var row = tableLog.insertRow(-1);
   
     for(var i in cookies){
-
-      
-      if(i==0){
+      if(i == 0){
         var firstRow = tableLog.insertRow(-1);
         firstRow.insertCell(0).innerHTML="<strong>NAME</strong>";
         firstRow.insertCell(1).innerHTML="<strong>VALUE</strong>";
@@ -130,6 +129,10 @@ onCookieChanged();
       });
       document.getElementById("banner").className="alert alert-danger alert-dismissible";
       document.getElementById("message").innerHTML = "All Cookies are cleared!";
+      $('#url').val("")
+      var table = document.getElementById("cookieslog");
+      table.style.display="none";
+      table.innerHTML = "";
       setCookieCount();
   }
   
