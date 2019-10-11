@@ -6,9 +6,14 @@ var count = 0;
 $("#banner").fadeTo(4000, 500).slideUp(500, function(){
   $("#banner").slideUp(500);
 });
+
 $("#developer").fadeTo(4000, 500).slideUp(500, function(){
   $("#developer").slideUp(500);
 });
+
+/**
+ * Retrieves all chrome cookies and displays the amount in the 'cookie-counter' element.
+ */
 function setCookieCount(){
 chrome.cookies.getAll({},function(cookies){
     count=cookies.length;
@@ -18,16 +23,19 @@ chrome.cookies.getAll({},function(cookies){
 
 setCookieCount();
 
+/**
+ * Displays the enumerated cookies, or an error on no domain, or missing protocol.
+ */
 function displayCookies(){
 
   setCookieCount();
-  
+
   document.getElementById("cookie").style.display="none";
-  
+
   var tableLog = document.getElementById("cookieslog");
   tableLog.style.display="table";
   tableLog.innerHTML = "";
-  
+
   var domain = document.getElementById("url").value;
   //var tarea_regex = /(http(s?))\:\/\//gi;
   if(domain=="" || domain==null){
@@ -77,6 +85,10 @@ function displayCookies(){
 }
 }
 
+/**
+ * Sets new cookie data based on form values, or an alert if input data is malformed.
+ * New cookies expire Friday, January 15, 2021 9:08:13 AM GMT
+ */
 function setCookies(){
   document.getElementById("cookieslog").style.display="none";
   var domain = document.getElementById("url").value;
@@ -112,6 +124,10 @@ function setCookies(){
 }
  //displayCookies();
  //setCookies();
+
+/**
+ * Sets a listener on the chrome cookies database; runs when cookies are changed.
+ */
 function onCookieChanged(){
   chrome.cookies.onChanged.addListener(function(cookies){
       console.log("cookies are being changed ", cookies.cookie.domain);
@@ -121,6 +137,9 @@ function onCookieChanged(){
 
 onCookieChanged();
 
+/**
+ * Removes all cookies enumerated, and displays the results.
+ */
   function clearAllCookies(){
     console.log("cookies cleared");
     chrome.cookies.getAll({}, function(cookies) {
@@ -132,13 +151,21 @@ onCookieChanged();
       document.getElementById("message").innerHTML = "All Cookies are cleared!";
       setCookieCount();
   }
-  
+
+  /**
+   * Removes a specific cookie from chrome.
+   *
+   * @param {*} cookie - a single element returned from chrome.cookies.getAll()
+   */
   function removeCookie(cookie) {
     var url = "http" + (cookie.secure ? "s" : "") + "://" + cookie.domain +
               cookie.path;
     chrome.cookies.remove({"url": url, "name": cookie.name});
   }
-  
+
+  /**
+   * Removes banner from screen
+   */
   function updateBanner(){
     document.getElementById("banner").style.display="none";
   }
