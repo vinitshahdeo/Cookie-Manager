@@ -13,6 +13,9 @@ $("#developer").fadeTo(4000, 500).slideUp(500, function(){
 
 /**
  * Retrieves all chrome cookies and displays the amount in the 'cookie-counter' element.
+ *
+ * Uses `chrome.cookies.getAll()`, https://developer.chrome.com/extensions/cookies#method-getAll
+ *
  */
 function setCookieCount(){
 chrome.cookies.getAll({},function(cookies){
@@ -25,6 +28,9 @@ setCookieCount();
 
 /**
  * Displays the enumerated cookies, or an error on no domain, or missing protocol.
+ *
+ * Uses `chrome.cookies.getAll()`, https://developer.chrome.com/extensions/cookies#method-getAll
+ *
  */
 function displayCookies(){
 
@@ -54,22 +60,20 @@ function displayCookies(){
     document.getElementById("banner").style.display="none";
     chrome.cookies.getAll({url:domain},function(cookies){
     //var row = tableLog.insertRow(-1);
-  
-    for(var i in cookies){
 
-      
+    for(var i in cookies){
       if(i==0){
         var firstRow = tableLog.insertRow(-1);
         firstRow.insertCell(0).innerHTML="<strong>NAME</strong>";
         firstRow.insertCell(1).innerHTML="<strong>VALUE</strong>";
       }
-      
+
       console.log(cookies[i]);
       //var row = "<tr><td>"+cookies[i].name+"</td><td>"+cookies[i].value+"</td></tr>";
       var row = tableLog.insertRow(-1);
       var value = cookies[i].value;
       var name = cookies[i].name;
-      
+
       if(name.length>10){
         name = name.substring(0,10);
         name+="...";
@@ -88,6 +92,9 @@ function displayCookies(){
 /**
  * Sets new cookie data based on form values, or an alert if input data is malformed.
  * New cookies expire Friday, January 15, 2021 9:08:13 AM GMT
+ *
+ * Uses `chrome.cookies.set()`, https://developer.chrome.com/extensions/cookies#method-set
+ *
  */
 function setCookies(){
   document.getElementById("cookieslog").style.display="none";
@@ -127,6 +134,9 @@ function setCookies(){
 
 /**
  * Sets a listener on the chrome cookies database; runs when cookies are changed.
+ *
+ * Uses `chrome.cookies.onChanged`, https://developer.chrome.com/extensions/cookies#event-onChanged
+ *
  */
 function onCookieChanged(){
   chrome.cookies.onChanged.addListener(function(cookies){
@@ -139,6 +149,9 @@ onCookieChanged();
 
 /**
  * Removes all cookies enumerated, and displays the results.
+ *
+ * Uses `chrome.cookies.getAll()`, https://developer.chrome.com/extensions/cookies#method-getAll
+ *
  */
   function clearAllCookies(){
     console.log("cookies cleared");
@@ -154,6 +167,8 @@ onCookieChanged();
 
   /**
    * Removes a specific cookie from chrome.
+   *
+   * Uses `chrome.cookies.remove()`, https://developer.chrome.com/extensions/cookies#method-remove
    *
    * @param {*} cookie - a single element returned from chrome.cookies.getAll()
    */
