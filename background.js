@@ -122,7 +122,6 @@ clearAllCookies = () => {
       });
       document.getElementById("banner").className="alert alert-danger alert-dismissible";
       document.getElementById("message").innerHTML = "All Cookies are cleared!";
-      $('#url').val("")
       var table = document.getElementById("cookieslog");
       table.style.display="none";
       table.innerHTML = "";
