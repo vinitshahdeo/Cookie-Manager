@@ -38,14 +38,13 @@ displayCookies = () => {
     $("#message").html("Invalid URL! <strong>Hint</strong> : Please enter <strong>complete url</strong> including <kbd>http://</kpd> or <kpd>https://</kpd> below and press <span class='label label-primary'>Display Cookies</span>")
   }
   if(!(domain.indexOf("http://") == 0 || domain.indexOf("https://") == 0)){
-    $("#banner").addClass("alert alert-danger alert-dismissible").css('display', 'block');
+    $("#banner").css('display', 'block');
     $("#message").html("Invalid URL! <strong>Hint</strong> : Please enter <strong>complete url</strong> including <kbd>http://</kbd> or <kbd>https://</kbd> below and press <span class='label label-primary'>Display Cookies</span>").css("display","block");
 
   }
   else{
     $("#banner").css('display', "none");
     chrome.cookies.getAll({url:domain},function(cookies){
-    //var row = tableLog.insertRow(-1);
     for(var i in cookies){
       if(i == 0){
         var firstRow = tableLog.insertRow(-1);
@@ -81,7 +80,6 @@ setCookies = () => {
   var value = $("#value").val();
   var input = $("#cookie").css('display','block')
   $("#banner").css('display','block').addClass("alert alert-info alert-dismissible")
-
   // One message instance
   let message = $("#message").html("Please enter the <strong>url</strong>, <strong>name</strong> and <strong>value</strong> pair and click <span class='label label-success'>Set Cookies</span> button.") 
 
@@ -92,33 +90,30 @@ setCookies = () => {
     message
   }
   else{
-  chrome.cookies.set({url:domain,name:name,value:value,expirationDate : 1610701693},function(cookie){
-    console.log("cookie is set");
-
-    $("#banner").removeClass("alert alert-info alert-dismissible").addClass("alert alert-success alert-dismissible")
-    document.getElementById("message").innerHTML = "<strong>SUCCESS!</strong> Cookies is set for <strong>"+domain+"</strong>";
-    console.log(cookie);
-    var name = document.getElementById("key").value="";
-    var value = document.getElementById("value").value="";
-    $("#banner").fadeTo(2000, 500).slideUp(500, function(){
-      $("#banner").slideUp(500);
+    chrome.cookies.set({url:domain,name:name,value:value,expirationDate : 1610701693},function(cookie){
+      $("#banner").removeClass("alert alert-info alert-dismissible").addClass("alert alert-success alert-dismissible")
+      $("#message").html("<strong>SUCCESS!</strong> Cookies is set for <strong>"+domain+"</strong>");
+      console.log(cookie);
+      $("#url").val('')
+      var name = document.getElementById("key").value="";
+      var value = document.getElementById("value").value="";
+      $("#banner").fadeTo(2000, 500).slideUp(500, function(){
+        $("#banner").slideUp(500);
+      });
+      setCookieCount();
     });
-    setCookieCount();
-  });
+  }
 }
-}
- //displayCookies();
- //setCookies();
-function onCookieChanged(){
+
+onCookieChanged = () => {
   chrome.cookies.onChanged.addListener(function(cookies){
       console.log(cookies);
       console.log("cookies are being changed ", cookies.cookie.domain);
   });
 }
-
 onCookieChanged();
 
-  function clearAllCookies(){
+clearAllCookies = () => {
     console.log("cookies cleared");
     chrome.cookies.getAll({}, function(cookies) {
         for (var i in cookies) {
@@ -135,8 +130,7 @@ onCookieChanged();
   }
   
   function removeCookie(cookie) {
-    var url = "http" + (cookie.secure ? "s" : "") + "://" + cookie.domain +
-              cookie.path;
+    var url = "http" + (cookie.secure ? "s" : "") + "://" + cookie.domain + cookie.path;
     chrome.cookies.remove({"url": url, "name": cookie.name});
   }
   
@@ -145,21 +139,18 @@ onCookieChanged();
   }
 
   document.addEventListener('DOMContentLoaded', function() {
-    var clear_Cookies = document.getElementById("clear_cookies");
-    var set_Cookies = document.getElementById("set_cookies");
-    var display_Cookies = document.getElementById("display_cookies");
-    var url = document.getElementById("url");
+
     // onClick's logic below:
-    clear_Cookies.addEventListener('click', function() {
+    $("#clear_cookies").on('click', function() {
         clearAllCookies();
     });
-    set_Cookies.addEventListener('click',function(){
+    $("#set_cookies").on('click',function(){
         setCookies();
     });
-    display_Cookies.addEventListener('click',function(){
+    $("#display_cookies").on('click',function(){
         displayCookies();
     });
-    url.addEventListener('blur',function(){
+    $("#url").on('blur',function(){
         updateBanner();
     });
 });
