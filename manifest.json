@@ -12,7 +12,6 @@
     },
     "background": {
       "scripts": [
-        "js/jquery.min.js",
         "background.js"
       ],
       "persistent": false
