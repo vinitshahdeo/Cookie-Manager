@@ -34,20 +34,18 @@ displayCookies = () => {
   if(domain=="" || domain==null){
     $("#banner").css('display', "block");
     $("#message").css('display',"block");
-    document.getElementById("banner").style.className="alert alert-danger alert-dismissible";
-    document.getElementById("message").innerHTML="Invalid URL! <strong>Hint</strong> : Please enter <strong>complete url</strong> including <kbd>http://</kpd> or <kpd>https://</kpd> below and press <span class='label label-primary'>Display Cookies</span>"
+    $("#banner").addClass("alert alert-danger alert-dismissible");
+    $("#message").html("Invalid URL! <strong>Hint</strong> : Please enter <strong>complete url</strong> including <kbd>http://</kpd> or <kpd>https://</kpd> below and press <span class='label label-primary'>Display Cookies</span>")
   }
   if(!(domain.indexOf("http://") == 0 || domain.indexOf("https://") == 0)){
-    document.getElementById("banner").style.display="block";
-    document.getElementById("message").style.display="block";
-    document.getElementById("banner").style.className="alert alert-danger alert-dismissible";
-    document.getElementById("message").innerHTML="Invalid URL! <strong>Hint</strong> : Please enter <strong>complete url</strong> including <kbd>http://</kbd> or <kbd>https://</kbd> below and press <span class='label label-primary'>Display Cookies</span>";
+    $("#banner").addClass("alert alert-danger alert-dismissible").css('display', 'block');
+    $("#message").html("Invalid URL! <strong>Hint</strong> : Please enter <strong>complete url</strong> including <kbd>http://</kbd> or <kbd>https://</kbd> below and press <span class='label label-primary'>Display Cookies</span>").css("display","block");
+
   }
   else{
-    document.getElementById("banner").style.display="none";
+    $("#banner").css('display', "none");
     chrome.cookies.getAll({url:domain},function(cookies){
     //var row = tableLog.insertRow(-1);
-  
     for(var i in cookies){
       if(i == 0){
         var firstRow = tableLog.insertRow(-1);
@@ -76,28 +74,28 @@ displayCookies = () => {
 }
 }
 
-function setCookies(){
-  document.getElementById("cookieslog").style.display="none";
-  var domain = document.getElementById("url").value;
-  var name = document.getElementById("key").value;
-  var value = document.getElementById("value").value;
-  var input = document.getElementById("cookie").style.display="block";
-  var banner = document.getElementById("banner");
-  banner.style.display="block";
-  banner.className="alert alert-info alert-dismissible"
-  document.getElementById("message").innerHTML = "Please enter the <strong>url</strong>, <strong>name</strong> and <strong>value</strong> pair and click <span class='label label-success'>Set Cookies</span> button."
-  if(domain=="" || domain==null){
-    document.getElementById("message").innerHTML = "Please enter the <kbd>url</kbd>, <kbd>name</kbd> & <kbd>value</kbd> pair and click <span class='label label-success'>Set Cookies</span> button."
+setCookies = () => {
+  $("#cookieslog").css('display', 'none')
+  var domain = $("#url").val();
+  var name = $("#key").val();
+  var value = $("#value").val();
+  var input = $("#cookie").css('display','block')
+  $("#banner").css('display','block').addClass("alert alert-info alert-dismissible")
+
+  // One message instance
+  let message = $("#message").html("Please enter the <strong>url</strong>, <strong>name</strong> and <strong>value</strong> pair and click <span class='label label-success'>Set Cookies</span> button.") 
+
+  if(domain == ""){
+    message
   }
   else if(name=="" || name==null || value=="" || value==null){
-    banner.className="alert alert-warning alert-dismissible";
-    document.getElementById("message").innerHTML = "Please enter the <code>name</code> and <code>value</code> pair and click <span class='label label-success'>Set Cookies</span> button."
+    message
   }
   else{
   chrome.cookies.set({url:domain,name:name,value:value,expirationDate : 1610701693},function(cookie){
     console.log("cookie is set");
 
-    document.getElementById("banner").className="alert alert-success alert-dismissible";
+    $("#banner").removeClass("alert alert-info alert-dismissible").addClass("alert alert-success alert-dismissible")
     document.getElementById("message").innerHTML = "<strong>SUCCESS!</strong> Cookies is set for <strong>"+domain+"</strong>";
     console.log(cookie);
     var name = document.getElementById("key").value="";
@@ -113,8 +111,8 @@ function setCookies(){
  //setCookies();
 function onCookieChanged(){
   chrome.cookies.onChanged.addListener(function(cookies){
-      console.log("cookies are being changed ", cookies.cookie.domain);
       console.log(cookies);
+      console.log("cookies are being changed ", cookies.cookie.domain);
   });
 }
 
