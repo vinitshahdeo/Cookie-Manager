@@ -139,6 +139,11 @@ onCookieChanged();
     chrome.cookies.remove({"url": url, "name": cookie.name});
   }
   
+  function deleteIndividualCookies() {
+	  var url = document.getElementById("url").value;
+	  chrome.cookies.remove({"url": url});
+  }
+  
   function updateBanner(){
     document.getElementById("banner").style.display="none";
   }
@@ -147,6 +152,7 @@ onCookieChanged();
     var clear_Cookies = document.getElementById("clear_cookies");
     var set_Cookies = document.getElementById("set_cookies");
     var display_Cookies = document.getElementById("display_cookies");
+	var delete_Cookies = document.getElementById("delete_cookies");
     var url = document.getElementById("url");
     // onClick's logic below:
     clear_Cookies.addEventListener('click', function() {
@@ -157,6 +163,9 @@ onCookieChanged();
     });
     display_Cookies.addEventListener('click',function(){
         displayCookies();
+    });
+	delete_Cookies.addEventListener('click', function() {
+        deleteIndividualCookies();
     });
     url.addEventListener('blur',function(){
         updateBanner();
