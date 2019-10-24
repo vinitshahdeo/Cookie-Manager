@@ -122,15 +122,17 @@ function onCookieChanged(){
 onCookieChanged();
 
   function clearAllCookies(){
-    console.log("cookies cleared");
-    chrome.cookies.getAll({}, function(cookies) {
-        for (var i in cookies) {
-          removeCookie(cookies[i]);
-        }
+    if (confirm("Do you want to clear all cookies ?")) {
+      console.log("cookies cleared");
+      chrome.cookies.getAll({}, function(cookies) {
+          for (var i in cookies) {
+            removeCookie(cookies[i]);
+          }
       });
       document.getElementById("banner").className="alert alert-danger alert-dismissible";
       document.getElementById("message").innerHTML = "All Cookies are cleared!";
       setCookieCount();
+    }
   }
   
   function removeCookie(cookie) {
