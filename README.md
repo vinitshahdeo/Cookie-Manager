@@ -1,7 +1,7 @@
 # Cookie Manager
 #### A chrome extension to manage browser cookies manually.
 
-[![Cookie Manager](https://img.shields.io/badge/Cookie-Manager-teal.svg?colorA=red&colorB=blue)](https://github.com/vinitshahdeo/Cookie-Manager) [![Chrome Extesion](https://img.shields.io/badge/Chrome-Extension-teal.svg)](https://github.com/vinitshahdeo/Cookie-Manager)
+[![Cookie Manager](https://img.shields.io/badge/Cookie-Manager-teal.svg?colorA=red&colorB=blue&style=flat-square)](https://github.com/vinitshahdeo/Cookie-Manager) [![Chrome Extesion](https://img.shields.io/badge/Chrome-Extension-teal.svg?style=flat-square&logo=google-chrome&logoColor=white)](https://github.com/vinitshahdeo/Cookie-Manager)
 
 ### What you can do with this extension?
 
@@ -52,7 +52,7 @@ Note - **Icon is taken from [here](https://pngtree.com/free-icon/clean_419342)**
 
 ### Wanna contribute?
 
-[![Fork this on GitHub](https://img.shields.io/badge/Click&nbsp;to&nbsp;Fork-This&nbsp;repository-orange.svg?style=for-the-badge)](https://github.com/vinitshahdeo/Cookie-Manager/fork) 
+[![Fork this on GitHub](https://img.shields.io/badge/Click&nbsp;to&nbsp;Fork-This&nbsp;repository-orange.svg?style=for-the-badge&logo=git)](https://github.com/vinitshahdeo/Cookie-Manager/fork) 
 
 If you want to contribute to this project and make it better, your help is most welcome. Fork it and make changes in your personal branch and send **pull request** to `develop`
 
