@@ -1,7 +1,7 @@
 # Cookie Manager
 #### A chrome extension to manage browser cookies manually.
 
-[![Cookie Manager](https://img.shields.io/badge/Cookie-Manager-teal.svg?colorA=red&colorB=blue)](https://github.com/vinitshahdeo/Cookie-Manager) [![Chrome Extesion](https://img.shields.io/badge/Chrome-Extension-teal.svg)](https://github.com/vinitshahdeo/Cookie-Manager)
+[![Cookie Manager](https://img.shields.io/badge/Cookie-Manager-teal.svg?colorA=red&colorB=blue&style=flat-square)](https://github.com/vinitshahdeo/Cookie-Manager) [![Chrome Extesion](https://img.shields.io/badge/Chrome-Extension-teal.svg?style=flat-square&logo=google-chrome&logoColor=white)](https://github.com/vinitshahdeo/Cookie-Manager)
 
 ### What you can do with this extension?
 
@@ -52,11 +52,13 @@ Note - **Icon is taken from [here](https://pngtree.com/free-icon/clean_419342)**
 
 ### Wanna contribute?
 
-[![Fork this on GitHub](https://img.shields.io/badge/Click&nbsp;to&nbsp;Fork-This&nbsp;repository-orange.svg?style=for-the-badge)](https://github.com/vinitshahdeo/Cookie-Manager/fork)
+[![Fork this on GitHub](https://img.shields.io/badge/Click&nbsp;to&nbsp;Fork-This&nbsp;repository-orange.svg?style=for-the-badge&logo=git)](https://github.com/vinitshahdeo/Cookie-Manager/fork) 
 
 If you want to contribute to this project and make it better, your help is most welcome. Fork it and make changes in your personal branch and send **pull request** to `develop`
 
 
 ### Thanks!
 
-[![Author](https://img.shields.io/badge/Author-@vinitshahdeo-gray.svg?colorA=gray&colorB=dodgerblue)](https://github.com/vinitshahdeo/)
+[![Vinit Shahdeo](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/images/0)](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/links/0)[![](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/images/1)](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/links/1)[![](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/images/2)](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/links/2)[![](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/images/3)](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/links/3)[![](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/images/4)](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/links/4)[![](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/images/5)](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/links/5)[![](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/images/6)](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/links/6)[![](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/images/7)](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/links/7)
+
+[![Author](https://img.shields.io/badge/Author-@vinitshahdeo-gray.svg?colorA=gray&colorB=dodgerblue&logo=github)](https://github.com/vinitshahdeo/)
