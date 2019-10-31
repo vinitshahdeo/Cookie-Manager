@@ -9,6 +9,9 @@ $("#banner").fadeTo(4000, 500).slideUp(500, function(){
 $("#developer").fadeTo(4000, 500).slideUp(500, function(){
   $("#developer").slideUp(500);
 });
+/**
+ * @description Show how many cookie the browser currently has
+ */
 function setCookieCount(){
 chrome.cookies.getAll({},function(cookies){
     count=cookies.length;
@@ -17,17 +20,19 @@ chrome.cookies.getAll({},function(cookies){
 }
 
 setCookieCount();
-
+/**
+ * @description show all the cookies that are set for the selected domain
+ */
 function displayCookies(){
 
   setCookieCount();
-  
+
   document.getElementById("cookie").style.display="none";
-  
+
   var tableLog = document.getElementById("cookieslog");
   tableLog.style.display="table";
   tableLog.innerHTML = "";
-  
+
   var domain = document.getElementById("url").value;
   //var tarea_regex = /(http(s?))\:\/\//gi;
   if(domain=="" || domain==null){
@@ -46,22 +51,22 @@ function displayCookies(){
     document.getElementById("banner").style.display="none";
     chrome.cookies.getAll({url:domain},function(cookies){
     //var row = tableLog.insertRow(-1);
-  
+
     for(var i in cookies){
 
-      
+
       if(i==0){
         var firstRow = tableLog.insertRow(-1);
         firstRow.insertCell(0).innerHTML="<strong>NAME</strong>";
         firstRow.insertCell(1).innerHTML="<strong>VALUE</strong>";
       }
-      
+
       console.log(cookies[i]);
       //var row = "<tr><td>"+cookies[i].name+"</td><td>"+cookies[i].value+"</td></tr>";
       var row = tableLog.insertRow(-1);
       var value = cookies[i].value;
       var name = cookies[i].name;
-      
+
       if(name.length>10){
         name = name.substring(0,10);
         name+="...";
@@ -76,7 +81,9 @@ function displayCookies(){
   });
 }
 }
-
+/**
+ * @description set a cookie for the domain from the url input
+ */
 function setCookies(){
   document.getElementById("cookieslog").style.display="none";
   var domain = document.getElementById("url").value;
@@ -112,6 +119,9 @@ function setCookies(){
 }
  //displayCookies();
  //setCookies();
+/**
+ * @description attach a change event listener to the browser cookies
+ */
 function onCookieChanged(){
   chrome.cookies.onChanged.addListener(function(cookies){
       console.log("cookies are being changed ", cookies.cookie.domain);
@@ -120,7 +130,9 @@ function onCookieChanged(){
 }
 
 onCookieChanged();
-
+  /**
+   * @description remove all cookies currently set
+   */
   function clearAllCookies(){
     console.log("cookies cleared");
     chrome.cookies.getAll({}, function(cookies) {
@@ -132,13 +144,19 @@ onCookieChanged();
       document.getElementById("message").innerHTML = "All Cookies are cleared!";
       setCookieCount();
   }
-  
+  /**
+   *
+   * @param {Object} cookie
+   * @description remove selected cookie
+   */
   function removeCookie(cookie) {
     var url = "http" + (cookie.secure ? "s" : "") + "://" + cookie.domain +
               cookie.path;
     chrome.cookies.remove({"url": url, "name": cookie.name});
   }
-  
+  /**
+   * @description Hide alert banner
+   */
   function updateBanner(){
     document.getElementById("banner").style.display="none";
   }
