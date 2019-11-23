@@ -23,6 +23,8 @@
 
 ### Installation
 
+[![GitHub](https://img.shields.io/github/license/vinitshahdeo/Cookie-Manager?logo=github)](https://github.com/vinitshahdeo/Cookie-Manager/)
+
 **Steps to install this extension manually :**
 
 - Clone this repository using `git clone https://github.com/vinitshahdeo/Cookie-Manager`
