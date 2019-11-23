@@ -1,7 +1,11 @@
 # Cookie Manager
-#### A chrome extension to manage browser cookies manually.
 
-[![Cookie Manager](https://img.shields.io/badge/Cookie-Manager-teal.svg?colorA=red&colorB=blue&style=flat-square)](https://github.com/vinitshahdeo/Cookie-Manager) [![Chrome Extesion](https://img.shields.io/badge/Chrome-Extension-teal.svg?style=flat-square&logo=google-chrome&logoColor=white)](https://github.com/vinitshahdeo/Cookie-Manager)
+[![Cookie Manager](https://img.shields.io/badge/Cookie-Manager-teal.svg?colorA=red&colorB=blue&style=flat)](https://github.com/vinitshahdeo/Cookie-Manager) [![Chrome Extesion](https://img.shields.io/badge/Chrome-Extension-teal.svg?style=flat&logo=google-chrome&logoColor=white)](https://github.com/vinitshahdeo/Cookie-Manager)
+
+### A chrome extension to manage browser cookies manually.
+
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/y/vinitshahdeo/Cookie-Manager?logo=github)](https://github.com/vinitshahdeo/Cookie-Manager/) [![GitHub last commit](https://img.shields.io/github/last-commit/vinitshahdeo/Cookie-Manager?logo=git&logoColor=white)](https://github.com/vinitshahdeo/Cookie-Manager/)
+
 
 ### What you can do with this extension?
 
@@ -18,6 +22,8 @@
 ![Screenshot](https://github.com/vinitshahdeo/Cookie-Manager/blob/master/assets/Screenshot%202019-01-17%20at%2010.57.41%20PM.png?raw=true)
 
 ### Installation
+
+[![GitHub](https://img.shields.io/github/license/vinitshahdeo/Cookie-Manager?logo=github)](https://github.com/vinitshahdeo/Cookie-Manager/)
 
 **Steps to install this extension manually :**
 
@@ -40,7 +46,9 @@ Note - **Icon is taken from [here](https://pngtree.com/free-icon/clean_419342)**
 
 ### To Do
 
-- [x] Setting cookies for given domain
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?logo=github)](https://github.com/vinitshahdeo/Cookie-Manager/pulls) [![GitHub pull requests](https://img.shields.io/github/issues-pr/vinitshahdeo/Cookie-Manager?logo=git&logoColor=white)](https://github.com/vinitshahdeo/Cookie-Manager/pulls)
+
+- [X] Setting cookies for given domain
 
 - [ ] Display cookies based on the filter i.e. regex(say *.github.com)
 
@@ -52,13 +60,22 @@ Note - **Icon is taken from [here](https://pngtree.com/free-icon/clean_419342)**
 
 ### Wanna contribute?
 
-[![Fork this on GitHub](https://img.shields.io/badge/Click&nbsp;to&nbsp;Fork-This&nbsp;repository-orange.svg?style=for-the-badge&logo=git)](https://github.com/vinitshahdeo/Cookie-Manager/fork) 
+[![GitHub issues](https://img.shields.io/github/issues/vinitshahdeo/Cookie-Manager?logo=github)](https://github.com/vinitshahdeo/Cookie-Manager/issues) [![GitHub forks](https://img.shields.io/github/forks/vinitshahdeo/Cookie-Manager?logo=github)](https://github.com/vinitshahdeo/Cookie-Manager/network) [![GitHub stars](https://img.shields.io/github/stars/vinitshahdeo/Cookie-Manager?color=red&logo=github)](https://github.com/vinitshahdeo/Cookie-Manager/stargazers) 
 
 If you want to contribute to this project and make it better, your help is most welcome. Fork it and make changes in your personal branch and send **pull request** to `develop`
+
+[![Fork this on GitHub](https://img.shields.io/badge/Click&nbsp;to&nbsp;Fork-This&nbsp;repository-orange.svg?style=for-the-badge&logo=git)](https://github.com/vinitshahdeo/Cookie-Manager/fork) 
+
+### Need Help?
+
+Feel free to ask me, if you need any help.
+
+[![Twitter Follow](https://img.shields.io/twitter/follow/Vinit_Shahdeo?style=social)](https://twitter.com/Vinit_Shahdeo)
+
 
 
 ### Thanks!
 
 [![Vinit Shahdeo](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/images/0)](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/links/0)[![](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/images/1)](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/links/1)[![](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/images/2)](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/links/2)[![](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/images/3)](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/links/3)[![](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/images/4)](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/links/4)[![](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/images/5)](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/links/5)[![](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/images/6)](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/links/6)[![](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/images/7)](https://sourcerer.io/fame/vinitshahdeo/vinitshahdeo/Cookie-Manager/links/7)
 
-[![Author](https://img.shields.io/badge/Author-@vinitshahdeo-gray.svg?colorA=gray&colorB=dodgerblue&logo=github)](https://github.com/vinitshahdeo/)
+[![Author](https://img.shields.io/badge/Author-@vinitshahdeo-gray.svg?colorA=gray&colorB=dodgerblue&logo=github)](https://github.com/vinitshahdeo/) [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://github.com/vinitshahdeo)
