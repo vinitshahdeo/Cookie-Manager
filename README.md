@@ -64,6 +64,13 @@ If you want to contribute to this project and make it better, your help is most 
 
 [![Fork this on GitHub](https://img.shields.io/badge/Click&nbsp;to&nbsp;Fork-This&nbsp;repository-orange.svg?style=for-the-badge&logo=git)](https://github.com/vinitshahdeo/Cookie-Manager/fork) 
 
+### Need Help?
+
+Feel free to ask me, if you need any help.
+
+[![Twitter Follow](https://img.shields.io/twitter/follow/Vinit_Shahdeo?style=social)](https://twitter.com/Vinit_Shahdeo)
+
+
 
 ### Thanks!
 
