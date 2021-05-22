@@ -16,65 +16,119 @@ chrome.cookies.getAll({},function(cookies){
 });
 }
 
+// Returns an array of sorted keys from an array.
+function sortedKeys(array) {
+  var keys = [];
+  for (var i in array) {
+    keys.push(i);
+  }
+  keys.sort();
+  return keys;
+}
+
+// A container object used for caching the browser's cookies
+function CookieCache() {
+  this.cookies_ = {};
+  this.reset = function () {
+    this.cookies_ = {};
+  }
+  this.add = function (cookie) {
+    var domain = cookie.domain;
+    if (!this.cookies_[domain]) {
+      this.cookies_[domain] = [];
+    }
+    this.cookies_[domain].push(cookie);
+  };
+  // Returns a sorted list of cookie domains that match |filter|. If |filter| is
+  //  null, returns all domains.
+  this.getDomains = function (filter) {
+    var result = [];
+    sortedKeys(this.cookies_).forEach(function (domain) {
+      if (!filter || domain.indexOf(filter) != -1) {
+        result.push(domain);
+      }
+    });
+    return result;
+  }
+  this.getCookies = function (domain) {
+    return this.cookies_[domain];
+  };
+}
+
 setCookieCount();
+var cache = new CookieCache();
+chrome.cookies.getAll({}, function (cookies) {
+  for (var cookie in cookies) {
+    cache.add(cookies[cookie]);
+  }
+});
 
 function displayCookies(){
 
   setCookieCount();
-  
-  document.getElementById("cookie").style.display="none";
-  
-  var tableLog = document.getElementById("cookieslog");
-  tableLog.style.display="table";
-  tableLog.innerHTML = "";
-  
-  var domain = document.getElementById("url").value;
-  //var tarea_regex = /(http(s?))\:\/\//gi;
-  if(domain=="" || domain==null){
-    document.getElementById("banner").style.display="block";
-    document.getElementById("message").style.display-"block";
-    document.getElementById("banner").style.className="alert alert-danger alert-dismissible";
-    document.getElementById("message").innerHTML="Invalid URL! <strong>Hint</strong> : Please enter <strong>complete url</strong> including <kbd>http://</kpd> or <kpd>https://</kpd> below and press <span class='label label-primary'>Display Cookies</span>"
-  }
-  if(!(domain.indexOf("http://") == 0 || domain.indexOf("https://") == 0)){
-    document.getElementById("banner").style.display="block";
-    document.getElementById("message").style.display="block";
-    document.getElementById("banner").style.className="alert alert-danger alert-dismissible";
-    document.getElementById("message").innerHTML="Invalid URL! <strong>Hint</strong> : Please enter <strong>complete url</strong> including <kbd>http://</kbd> or <kbd>https://</kbd> below and press <span class='label label-primary'>Display Cookies</span>";
-  }
-  else{
-    document.getElementById("banner").style.display="none";
-    chrome.cookies.getAll({url:domain},function(cookies){
-    //var row = tableLog.insertRow(-1);
-  
-    for(var i in cookies){
 
-      
-      if(i==0){
+  document.getElementById("cookie").style.display = "none";
+
+  var tableLog = document.getElementById("cookieslog");
+  tableLog.style.display = "table";
+  tableLog.innerHTML = "";
+
+  var filter = document.getElementById("url").value;
+  //var tarea_regex = /(http(s?))\:\/\//gi;
+  if (filter == "" || filter == null) {
+    document.getElementById("banner").style.display = "block";
+    document.getElementById("message").style.display - "block";
+    document.getElementById("banner").style.className = "alert alert-danger alert-dismissible";
+    document.getElementById("message").innerHTML = "Invalid URL! <strong>Hint</strong> : Please enter <strong>complete url</strong> including <kbd>http://</kpd> or <kpd>https://</kpd> below and press <span class='label label-primary'>Display Cookies</span>"
+  }
+
+  else {
+    document.getElementById("banner").style.display = "none";
+
+
+    var domains = cache.getDomains(filter);
+    var domainCookies = [];
+    var cookies = [];
+    domains.forEach(function (domain) {
+      domainCookies = cache.getCookies(domain);
+      cookies.push(domainCookies);
+    });
+
+    for (var i in cookies) {
+
+      if (i == 0) {
         var firstRow = tableLog.insertRow(-1);
-        firstRow.insertCell(0).innerHTML="<strong>NAME</strong>";
-        firstRow.insertCell(1).innerHTML="<strong>VALUE</strong>";
+        firstRow.insertCell(0).innerHTML = "<strong>DOMAIN</strong>";
+        firstRow.insertCell(1).innerHTML = "<strong>NAME</strong>";
+        firstRow.insertCell(2).innerHTML = "<strong>VALUE</strong>";
       }
-      
-      console.log(cookies[i]);
-      //var row = "<tr><td>"+cookies[i].name+"</td><td>"+cookies[i].value+"</td></tr>";
-      var row = tableLog.insertRow(-1);
-      var value = cookies[i].value;
-      var name = cookies[i].name;
-      
-      if(name.length>10){
-        name = name.substring(0,10);
-        name+="...";
+
+      for (var j in cookies[i]) {
+        // console.log(cookies[i][j]);
+        //var row = "<tr><td>"+cookies[i].name+"</td><td>"+cookies[i].value+"</td></tr>";
+        var row = tableLog.insertRow(-1);
+        var domain = cookies[i][j].domain;
+        var value = cookies[i][j].value;
+        var name = cookies[i][j].name;
+
+        if (domain.length > 20) {
+          domain = domain.substring(0, 20);
+          domain += "...";
+        }
+        if (name.length > 20) {
+          name = name.substring(0, 20);
+          name += "...";
+        }
+        if (value.length > 25) {
+          value = value.substring(0, 25);
+          value += "...";
+        }
+        row.insertCell(0).innerHTML = domain;
+        row.insertCell(1).innerHTML = name;
+        row.insertCell(2).innerHTML = value;
       }
-      if(value.length>15){
-        value = value.substring(0,15);
-        value+="...";
-      }
-      row.insertCell(0).innerHTML = name;
-      row.insertCell(1).innerHTML = value;
     }
-  });
-}
+  }
 }
 
 function setCookies(){
