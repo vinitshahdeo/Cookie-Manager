@@ -121,19 +121,30 @@ function onCookieChanged(){
 
 onCookieChanged();
 
-  function clearAllCookies(){
-    console.log("cookies cleared");
-    chrome.cookies.getAll({}, function(cookies) {
-        for (var i in cookies) {
-          removeCookie(cookies[i]);
+function clearAllCookies(){
+      $.confirm({
+        title: 'Confirm ?',
+        content: 'Are you sure you want to clear all cookies for this domain?',
+        buttons: {
+            confirm: function () {
+                console.log("cookies cleared");
+                chrome.cookies.getAll({}, function(cookies) {
+                  for (var i in cookies) {
+                    removeCookie(cookies[i]);
+                  }
+                });
+                document.getElementById("banner").className="alert alert-danger alert-dismissible";
+                document.getElementById("message").innerHTML = "All Cookies are cleared!";
+                setCookieCount();
+            },
+            cancel: function () {
+            }
         }
-      });
-      document.getElementById("banner").className="alert alert-danger alert-dismissible";
-      document.getElementById("message").innerHTML = "All Cookies are cleared!";
-      setCookieCount();
+    });
   }
   
   function removeCookie(cookie) {
+
     var url = "http" + (cookie.secure ? "s" : "") + "://" + cookie.domain +
               cookie.path;
     chrome.cookies.remove({"url": url, "name": cookie.name});
