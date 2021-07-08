@@ -54,7 +54,7 @@ Note - **Icon is taken from [here](https://pngtree.com/free-icon/clean_419342)**
 
 - [ ] Delete cookies individually for the domain
 
-- [ ] Prompt a confirmation for **`Clear All Cookies`**
+- [x] Prompt a confirmation for **`Clear All Cookies`**
 
 - [ ] Refactoring of code
 
