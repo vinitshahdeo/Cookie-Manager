@@ -118,7 +118,6 @@ function onCookieChanged(){
       console.log(cookies);
   });
 }
-
 onCookieChanged();
 
   function clearAllCookies(){
@@ -133,6 +132,28 @@ onCookieChanged();
       setCookieCount();
   }
   
+  function getConfirmation(){
+      document.getElementById("cookie-form").style.display="none";
+      document.getElementById("banner").style.display="none";
+      document.getElementById("confirm").style.display="block";
+
+      var yesButton = document.getElementById("confirm_clear");
+      var noButton = document.getElementById("abort_clear");
+
+      yesButton.addEventListener('click', function() {
+        clearAllCookies();
+        document.getElementById("cookie-form").style.display="block";
+        document.getElementById("banner").style.display="block";
+        document.getElementById("confirm").style.display="none";
+      });
+
+      noButton.addEventListener('click', function() {
+        document.getElementById("cookie-form").style.display="block";
+        document.getElementById("banner").style.display="block";
+        document.getElementById("confirm").style.display="none";
+      });
+
+  }
   function removeCookie(cookie) {
     var url = "http" + (cookie.secure ? "s" : "") + "://" + cookie.domain +
               cookie.path;
@@ -150,7 +171,8 @@ onCookieChanged();
     var url = document.getElementById("url");
     // onClick's logic below:
     clear_Cookies.addEventListener('click', function() {
-        clearAllCookies();
+        getConfirmation();
+        //clearAllCookies();
     });
     set_Cookies.addEventListener('click',function(){
         setCookies();

@@ -42,9 +42,19 @@
             <div class="alert alert-info alert-dismissible" id="banner">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                     <p id="message">Please enter <strong>complete url</strong> below and press <span class='label label-primary'>Display Cookies</span></p>
-                  </div>
-                  <div id="result"></div>
-            <form>
+            </div>
+
+            <div class="alert alert-danger" style="display:none;" id="confirm">
+                    <p id="message"><strong>Warning! </strong> Are you sure? you want to clear all cookies</p>
+                    <hr>
+
+                    <button type="button" class="btn btnBelow btn-warning" id="confirm_clear">Yes</button>
+                    <button type="button" class="btn btnBelow btn-secondary" id="abort_clear">No</button>
+
+            </div>
+
+            <div id="result"></div>
+            <form id="cookie-form">
               <div class="form-group">
                 <label for="url">Enter Domain:</label>
                 <input type="text" class="form-control" id="url" required="required">
