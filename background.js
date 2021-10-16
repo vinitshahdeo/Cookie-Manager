@@ -144,7 +144,7 @@ onCookieChanged();
   }
 
   document.addEventListener('DOMContentLoaded', function() {
-    var clear_Cookies = document.getElementById("clear_cookies");
+    var clear_Cookies = document.getElementById("confirmDelete")//("clear_cookies");
     var set_Cookies = document.getElementById("set_cookies");
     var display_Cookies = document.getElementById("display_cookies");
     var url = document.getElementById("url");
