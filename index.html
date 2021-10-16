@@ -56,7 +56,7 @@
                 <label for="value">Value:</label>
                 <input type="text" class="form-control" id="value" required="required">
               </div>
-            <button type = "button"  class="btn btnBelow btn-danger" id="clear_cookies">Clear All Cookies</button>
+            <button type = "button" data-toggle="modal" data-target="#confirm"   class="btn btnBelow btn-danger" id="clear_cookies">Clear All Cookies</button>
             <button type="button" class="btn btnBelow btn-primary" id="display_cookies">Display Cookies</button>
             <button type="button" class="btn btnBelow btn-success" id="set_cookies">Set Cookies</button>
             </form>
@@ -65,7 +65,19 @@
             <br>
             <table id="cookieslog" class="table table-hover table-bordered"></table>
           </div>
-          
+           <div id="confirm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="clearCookiesModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <span>All the cookies will be removed from browser.Are you sure?</span>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" data-dismiss="modal" class="btn btn-primary" id="confirmDelete">Delete</button>
+                    <button type="button" data-dismiss="modal" class="btn">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div id="developer"><p class="text-center text-info developer"><span class="label label-default">Developed by Vinit Shahdeo</span> </p></div>
 
         <script src="index.js"></script>
