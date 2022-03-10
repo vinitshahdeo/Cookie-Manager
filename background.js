@@ -2,15 +2,15 @@
  * @author Vinit Shahdeo
  * @email vinitshahdeo@gmail.com
  */
-var count = 0;
-$("#banner").fadeTo(4000, 500).slideUp(500, function(){
+let count = 0;
+$("#banner").fadeTo(4000, 500).slideUp(500, () => {
   $("#banner").slideUp(500);
 });
-$("#developer").fadeTo(4000, 500).slideUp(500, function(){
+$("#developer").fadeTo(4000, 500).slideUp(500, () => {
   $("#developer").slideUp(500);
 });
 function setCookieCount(){
-chrome.cookies.getAll({},function(cookies){
+chrome.cookies.getAll({}, (cookies) => {
     count=cookies.length;
     document.getElementById("cookie-counter").innerHTML = count;
 });
@@ -24,12 +24,12 @@ function displayCookies(){
   
   document.getElementById("cookie").style.display="none";
   
-  var tableLog = document.getElementById("cookieslog");
+  const tableLog = document.getElementById("cookieslog");
   tableLog.style.display="table";
   tableLog.innerHTML = "";
   
-  var domain = document.getElementById("url").value;
-  //var tarea_regex = /(http(s?))\:\/\//gi;
+  const domain = document.getElementById("url").value;
+  //let tarea_regex = /(http(s?))\:\/\//gi;
   if(domain=="" || domain==null){
     document.getElementById("banner").style.display="block";
     document.getElementById("message").style.display-"block";
@@ -44,23 +44,23 @@ function displayCookies(){
   }
   else{
     document.getElementById("banner").style.display="none";
-    chrome.cookies.getAll({url:domain},function(cookies){
-    //var row = tableLog.insertRow(-1);
+    chrome.cookies.getAll({url:domain}, (cookies) => {
+    //let row = tableLog.insertRow(-1);
   
-    for(var i in cookies){
+    for(let i in cookies){
 
       
       if(i==0){
-        var firstRow = tableLog.insertRow(-1);
+        let firstRow = tableLog.insertRow(-1);
         firstRow.insertCell(0).innerHTML="<strong>NAME</strong>";
         firstRow.insertCell(1).innerHTML="<strong>VALUE</strong>";
       }
       
       console.log(cookies[i]);
-      //var row = "<tr><td>"+cookies[i].name+"</td><td>"+cookies[i].value+"</td></tr>";
-      var row = tableLog.insertRow(-1);
-      var value = cookies[i].value;
-      var name = cookies[i].name;
+      //let row = "<tr><td>"+cookies[i].name+"</td><td>"+cookies[i].value+"</td></tr>";
+      const row = tableLog.insertRow(-1);
+      let value = cookies[i].value;
+      let name = cookies[i].name;
       
       if(name.length>10){
         name = name.substring(0,10);
@@ -79,11 +79,11 @@ function displayCookies(){
 
 function setCookies(){
   document.getElementById("cookieslog").style.display="none";
-  var domain = document.getElementById("url").value;
-  var name = document.getElementById("key").value;
-  var value = document.getElementById("value").value;
-  var input = document.getElementById("cookie").style.display="block";
-  var banner = document.getElementById("banner");
+  const domain = document.getElementById("url").value;
+  const name = document.getElementById("key").value;
+  const value = document.getElementById("value").value;
+  const input = document.getElementById("cookie").style.display="block";
+  const banner = document.getElementById("banner");
   banner.style.display="block";
   banner.className="alert alert-info alert-dismissible"
   document.getElementById("message").innerHTML = "Please enter the <strong>url</strong>, <strong>name</strong> and <strong>value</strong> pair and click <span class='label label-success'>Set Cookies</span> button."
@@ -95,15 +95,15 @@ function setCookies(){
     document.getElementById("message").innerHTML = "Please enter the <code>name</code> and <code>value</code> pair and click <span class='label label-success'>Set Cookies</span> button."
   }
   else{
-  chrome.cookies.set({url:domain,name:name,value:value,expirationDate : 1610701693},function(cookie){
+  chrome.cookies.set({url:domain,name:name,value:value,expirationDate : 1610701693}, (cookie) => {
     console.log("cookie is set");
 
     document.getElementById("banner").className="alert alert-success alert-dismissible";
     document.getElementById("message").innerHTML = "<strong>SUCCESS!</strong> Cookies is set for <strong>"+domain+"</strong>";
     console.log(cookie);
-    var name = document.getElementById("key").value="";
-    var value = document.getElementById("value").value="";
-    $("#banner").fadeTo(2000, 500).slideUp(500, function(){
+    const name = document.getElementById("key").value="";
+    const value = document.getElementById("value").value="";
+    $("#banner").fadeTo(2000, 500).slideUp(500, () => {
       $("#banner").slideUp(500);
     });
     setCookieCount();
@@ -113,7 +113,7 @@ function setCookies(){
  //displayCookies();
  //setCookies();
 function onCookieChanged(){
-  chrome.cookies.onChanged.addListener(function(cookies){
+  chrome.cookies.onChanged.addListener((cookies) => {
       console.log("cookies are being changed ", cookies.cookie.domain);
       console.log(cookies);
   });
@@ -123,8 +123,8 @@ onCookieChanged();
 
   function clearAllCookies(){
     console.log("cookies cleared");
-    chrome.cookies.getAll({}, function(cookies) {
-        for (var i in cookies) {
+    chrome.cookies.getAll({}, (cookies) =>  {
+        for (let i in cookies) {
           removeCookie(cookies[i]);
         }
       });
@@ -134,7 +134,7 @@ onCookieChanged();
   }
   
   function removeCookie(cookie) {
-    var url = "http" + (cookie.secure ? "s" : "") + "://" + cookie.domain +
+    let url = "http" + (cookie.secure ? "s" : "") + "://" + cookie.domain +
               cookie.path;
     chrome.cookies.remove({"url": url, "name": cookie.name});
   }
@@ -143,22 +143,22 @@ onCookieChanged();
     document.getElementById("banner").style.display="none";
   }
 
-  document.addEventListener('DOMContentLoaded', function() {
-    var clear_Cookies = document.getElementById("clear_cookies");
-    var set_Cookies = document.getElementById("set_cookies");
-    var display_Cookies = document.getElementById("display_cookies");
-    var url = document.getElementById("url");
+  document.addEventListener('DOMContentLoaded', () => {
+    let clear_Cookies = document.getElementById("clear_cookies");
+    let set_Cookies = document.getElementById("set_cookies");
+    let display_Cookies = document.getElementById("display_cookies");
+    let url = document.getElementById("url");
     // onClick's logic below:
-    clear_Cookies.addEventListener('click', function() {
+    clear_Cookies.addEventListener('click', () => {
         clearAllCookies();
     });
-    set_Cookies.addEventListener('click',function(){
+    set_Cookies.addEventListener('click', () => {
         setCookies();
     });
-    display_Cookies.addEventListener('click',function(){
+    display_Cookies.addEventListener('click', () => {
         displayCookies();
     });
-    url.addEventListener('blur',function(){
+    url.addEventListener('blur', () => {
         updateBanner();
     });
 });
