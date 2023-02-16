@@ -3,54 +3,50 @@
  * @email vinitshahdeo@gmail.com
  */
 var count = 0;
+// banner animations
 $("#banner").fadeTo(4000, 500).slideUp(500, function(){
   $("#banner").slideUp(500);
 });
 $("#developer").fadeTo(4000, 500).slideUp(500, function(){
   $("#developer").slideUp(500);
 });
-function setCookieCount(){
+
+// shows total cookies 
+setCookieCount = () => {
 chrome.cookies.getAll({},function(cookies){
-    count=cookies.length;
-    document.getElementById("cookie-counter").innerHTML = count;
+    count = cookies.length;
+    $("#cookie-counter").html(count);
 });
 }
 
 setCookieCount();
 
-function displayCookies(){
-
-  setCookieCount();
+displayCookies = () => {
   
-  document.getElementById("cookie").style.display="none";
+  $("#cookie").css('display', 'none');
   
   var tableLog = document.getElementById("cookieslog");
   tableLog.style.display="table";
   tableLog.innerHTML = "";
   
-  var domain = document.getElementById("url").value;
+  var domain = $("#url").val();
   //var tarea_regex = /(http(s?))\:\/\//gi;
   if(domain=="" || domain==null){
-    document.getElementById("banner").style.display="block";
-    document.getElementById("message").style.display-"block";
-    document.getElementById("banner").style.className="alert alert-danger alert-dismissible";
-    document.getElementById("message").innerHTML="Invalid URL! <strong>Hint</strong> : Please enter <strong>complete url</strong> including <kbd>http://</kpd> or <kpd>https://</kpd> below and press <span class='label label-primary'>Display Cookies</span>"
+    $("#banner").css('display', "block");
+    $("#message").css('display',"block");
+    $("#banner").addClass("alert alert-danger alert-dismissible");
+    $("#message").html("Invalid URL! <strong>Hint</strong> : Please enter <strong>complete url</strong> including <kbd>http://</kpd> or <kpd>https://</kpd> below and press <span class='label label-primary'>Display Cookies</span>")
   }
   if(!(domain.indexOf("http://") == 0 || domain.indexOf("https://") == 0)){
-    document.getElementById("banner").style.display="block";
-    document.getElementById("message").style.display="block";
-    document.getElementById("banner").style.className="alert alert-danger alert-dismissible";
-    document.getElementById("message").innerHTML="Invalid URL! <strong>Hint</strong> : Please enter <strong>complete url</strong> including <kbd>http://</kbd> or <kbd>https://</kbd> below and press <span class='label label-primary'>Display Cookies</span>";
+    $("#banner").css('display', 'block');
+    $("#message").html("Invalid URL! <strong>Hint</strong> : Please enter <strong>complete url</strong> including <kbd>http://</kbd> or <kbd>https://</kbd> below and press <span class='label label-primary'>Display Cookies</span>").css("display","block");
+
   }
   else{
-    document.getElementById("banner").style.display="none";
+    $("#banner").css('display', "none");
     chrome.cookies.getAll({url:domain},function(cookies){
-    //var row = tableLog.insertRow(-1);
-  
     for(var i in cookies){
-
-      
-      if(i==0){
+      if(i == 0){
         var firstRow = tableLog.insertRow(-1);
         firstRow.insertCell(0).innerHTML="<strong>NAME</strong>";
         firstRow.insertCell(1).innerHTML="<strong>VALUE</strong>";
@@ -77,51 +73,47 @@ function displayCookies(){
 }
 }
 
-function setCookies(){
-  document.getElementById("cookieslog").style.display="none";
-  var domain = document.getElementById("url").value;
-  var name = document.getElementById("key").value;
-  var value = document.getElementById("value").value;
-  var input = document.getElementById("cookie").style.display="block";
-  var banner = document.getElementById("banner");
-  banner.style.display="block";
-  banner.className="alert alert-info alert-dismissible"
-  document.getElementById("message").innerHTML = "Please enter the <strong>url</strong>, <strong>name</strong> and <strong>value</strong> pair and click <span class='label label-success'>Set Cookies</span> button."
-  if(domain=="" || domain==null){
-    document.getElementById("message").innerHTML = "Please enter the <kbd>url</kbd>, <kbd>name</kbd> & <kbd>value</kbd> pair and click <span class='label label-success'>Set Cookies</span> button."
+setCookies = () => {
+  $("#cookieslog").css('display', 'none')
+  var domain = $("#url").val();
+  var name = $("#key").val();
+  var value = $("#value").val();
+  var input = $("#cookie").css('display','block')
+  $("#banner").css('display','block').addClass("alert alert-info alert-dismissible")
+  // One message instance
+  let message = $("#message").html("Please enter the <strong>url</strong>, <strong>name</strong> and <strong>value</strong> pair and click <span class='label label-success'>Set Cookies</span> button.") 
+
+  if(domain == ""){
+    message
   }
   else if(name=="" || name==null || value=="" || value==null){
-    banner.className="alert alert-warning alert-dismissible";
-    document.getElementById("message").innerHTML = "Please enter the <code>name</code> and <code>value</code> pair and click <span class='label label-success'>Set Cookies</span> button."
+    message
   }
   else{
-  chrome.cookies.set({url:domain,name:name,value:value,expirationDate : 1610701693},function(cookie){
-    console.log("cookie is set");
-
-    document.getElementById("banner").className="alert alert-success alert-dismissible";
-    document.getElementById("message").innerHTML = "<strong>SUCCESS!</strong> Cookies is set for <strong>"+domain+"</strong>";
-    console.log(cookie);
-    var name = document.getElementById("key").value="";
-    var value = document.getElementById("value").value="";
-    $("#banner").fadeTo(2000, 500).slideUp(500, function(){
-      $("#banner").slideUp(500);
+    chrome.cookies.set({url:domain,name:name,value:value,expirationDate : 1610701693},function(cookie){
+      $("#banner").removeClass("alert alert-info alert-dismissible").addClass("alert alert-success alert-dismissible")
+      $("#message").html("<strong>SUCCESS!</strong> Cookies is set for <strong>"+domain+"</strong>");
+      console.log(cookie);
+      $("#url").val('')
+      var name = document.getElementById("key").value="";
+      var value = document.getElementById("value").value="";
+      $("#banner").fadeTo(2000, 500).slideUp(500, function(){
+        $("#banner").slideUp(500);
+      });
+      setCookieCount();
     });
-    setCookieCount();
-  });
-}
-}
- //displayCookies();
- //setCookies();
-function onCookieChanged(){
-  chrome.cookies.onChanged.addListener(function(cookies){
-      console.log("cookies are being changed ", cookies.cookie.domain);
-      console.log(cookies);
-  });
+  }
 }
 
+onCookieChanged = () => {
+  chrome.cookies.onChanged.addListener(function(cookies){
+      console.log(cookies);
+      console.log("cookies are being changed ", cookies.cookie.domain);
+  });
+}
 onCookieChanged();
 
-  function clearAllCookies(){
+clearAllCookies = () => {
     console.log("cookies cleared");
     chrome.cookies.getAll({}, function(cookies) {
         for (var i in cookies) {
@@ -130,12 +122,15 @@ onCookieChanged();
       });
       document.getElementById("banner").className="alert alert-danger alert-dismissible";
       document.getElementById("message").innerHTML = "All Cookies are cleared!";
+      $("#url").val("");
+      var table = document.getElementById("cookieslog");
+      table.style.display="none";
+      table.innerHTML = "";
       setCookieCount();
   }
   
   function removeCookie(cookie) {
-    var url = "http" + (cookie.secure ? "s" : "") + "://" + cookie.domain +
-              cookie.path;
+    var url = "http" + (cookie.secure ? "s" : "") + "://" + cookie.domain + cookie.path;
     chrome.cookies.remove({"url": url, "name": cookie.name});
   }
   
@@ -144,21 +139,18 @@ onCookieChanged();
   }
 
   document.addEventListener('DOMContentLoaded', function() {
-    var clear_Cookies = document.getElementById("clear_cookies");
-    var set_Cookies = document.getElementById("set_cookies");
-    var display_Cookies = document.getElementById("display_cookies");
-    var url = document.getElementById("url");
+
     // onClick's logic below:
-    clear_Cookies.addEventListener('click', function() {
+    $("#clear_cookies").on('click', function() {
         clearAllCookies();
     });
-    set_Cookies.addEventListener('click',function(){
+    $("#set_cookies").on('click',function(){
         setCookies();
     });
-    display_Cookies.addEventListener('click',function(){
+    $("#display_cookies").on('click',function(){
         displayCookies();
     });
-    url.addEventListener('blur',function(){
+    $("#url").on('blur',function(){
         updateBanner();
     });
 });

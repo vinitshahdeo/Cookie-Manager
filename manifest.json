@@ -11,7 +11,9 @@
       "default_popup": "index.html"
     },
     "background": {
-      "scripts": ["background.js"],
+      "scripts": [
+        "background.js"
+      ],
       "persistent": false
     },
     "manifest_version": 2
